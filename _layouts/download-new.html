@@ -72,38 +72,62 @@ layout: default
       </div>
     </div>
 
-    <div class="downloads buttons">
+    <div class="downloads buttons win">
       <div class="download-version">
-        <a class="button" href="#-activate-js-"  data-url-win="http://scala-ide.org/download/win" data-url-mac="http://scala-ide.org/download/mac" data-url-linux="http://scala-ide.org/download/lin" data-url-unix="http://scala-ide.org/download/nix">Download</a>
-        <p class="system"></p>
+        <a class="button" href="http://scala-ide.org/download/win">Download</a>
+        <p class="system">Windows</p>
       </div>
       <div class="download-version current">
-        <a class="button" href="#-activate-js-"  data-url-win="http://scala-ide.org/download/win" data-url-mac="http://scala-ide.org/download/mac" data-url-linux="http://scala-ide.org/download/lin" data-url-unix="http://scala-ide.org/download/nix">Download</a>
-        <p class="system"></p>
+        <a class="button" href="http://scala-ide.org/download/win">Download</a>
+        <p class="system">Windows</p>
       </div>
       <div class="download-version">
-        <a class="button" href="#-activate-js-"  data-url-win="http://scala-ide.org/download/win" data-url-mac="http://scala-ide.org/download/mac" data-url-linux="http://scala-ide.org/download/lin" data-url-unix="http://scala-ide.org/download/nix">Download</a>
-        <p class="system"></p>
+        <a class="button" href="http://scala-ide.org/download/win">Download</a>
+        <p class="system">Windows</p>
+      </div>
+    </div>
+    <div class="downloads buttons mac">
+      <div class="download-version">
+        <a class="button" href="http://scala-ide.org/download/mac">Download</a>
+        <p class="system">Mac OS</p>
+      </div>
+      <div class="download-version current">
+        <a class="button" href="http://scala-ide.org/download/mac">Download</a>
+        <p class="system">Mac OS</p>
+      </div>
+      <div class="download-version">
+        <a class="button" href="http://scala-ide.org/download/mac">Download</a>
+        <p class="system">Mac OS</p>
+      </div>
+    </div>
+    <div class="downloads buttons linux">
+      <div class="download-version">
+        <a class="button" href="http://scala-ide.org/download/linux">Download</a>
+        <p class="system">Linux</p>
+      </div>
+      <div class="download-version current">
+        <a class="button" href="http://scala-ide.org/download/linux">Download</a>
+        <p class="system">Linux</p>
+      </div>
+      <div class="download-version">
+        <a class="button" href="http://scala-ide.org/download/linux">Download</a>
+        <p class="system">Linux</p>
       </div>
     </div>
 
     <script type="text/javascript">
-    function getOS() {
-      if (navigator.appVersion.indexOf("Win") != -1) return ["win", "Windows"];
-      else if (navigator.appVersion.indexOf("Mac") != -1) return ["mac", "Mac OS"];
-      else if (navigator.appVersion.indexOf("Linux") != -1) return ["linux", "Linux"];
-      else return ["unix", "Unix"];
-    }
-    var downloadButtons = $(".downloads .button"),
-        downloadSystems = $(".downloads .system");
-    var system = getOS();
-    downloadButtons.each(function(index, button) {
-      $b = $(button);
-      $b.attr("href", $b.attr("data-url-"+system[0]));
-    });
-    downloadSystems.html(system[1]);
+      if (navigator.appVersion.indexOf("Win") != -1) {
+        $(".downloads.buttons").not(".win").hide();
+      }
+      else if (navigator.appVersion.indexOf("Mac") != -1) {
+        $(".downloads.buttons").not(".mac").hide();
+      }
+      else if (navigator.appVersion.indexOf("Linux") != -1) {
+        $(".downloads.buttons").not(".linux").hide();
+      }
     </script>
 
+    <hr class="limit"/>
 
     <div class="row">
       <div class="span11">        

@@ -51,10 +51,6 @@
 .downloads .requirements {
   text-align: left;
 }
-.downloads.buttons {
-  margin: 0 0 40px;
-}
-
 
 .downloads .button {
   display: block;
@@ -90,4 +86,11 @@
   background: -o-linear-gradient(top,  #40b0c8 0%,#66c9db 100%); /* Opera 11.10+ */
   background: -ms-linear-gradient(top,  #40b0c8 0%,#66c9db 100%); /* IE10+ */
   background: linear-gradient(to bottom,  #40b0c8 0%,#66c9db 100%); /* W3C */
+}
+
+
+
+hr.limit {
+  margin: 40px;
+  visibility: hidden;
 }
