@@ -21,6 +21,8 @@ layout: default
 
 <div class="bottom">
   <div class="container">
+
+
     <div class="download-titles row">
       <div class="span5">
         Next version
@@ -33,97 +35,55 @@ layout: default
       </div>
     </div>
 
+
     <div class="downloads">
-      <div class="download-version">
-        <h2>Scala-ide 1.1.2</h2>
+    {% for version in page.versions %}
+      <div class="download-version {{ version[0] }}">
+        <h2>{{ version[1].title }}</h2>
         <ul class="inside">
-          <li>Scala 2.12</li>
-          <li>Eclipse 3.8</li>
+          <li>{{ version[1].scala }}</li>
+          <li>{{ version[1].eclipse }}</li>
         </ul>
         <h3>Requirements</h3>
         <ul class="requirements">
-          <li>JDK6 or JD7</li>
-          <li>Eclipse 3.8, Eclipse 4.2 (Juno) or Eclipse 4.3 (Kepler). Read here if you have questions about the supported Eclipse packages.</li>
+        {% for requirement in version[1].requirements %}
+          <li>{{ requirement }}</li>
+        {% endfor %}
         </ul>
       </div>
-      <div class="download-version current">
-        <h2>Scala-ide 1.1.1</h2>
-        <ul class="inside">
-          <li>Scala 2.12</li>
-          <li>Eclipse 3.8</li>
-        </ul>
-        <h3>Requirements</h3>
-        <ul class="requirements">
-          <li>JDK6 or JD7</li>
-          <li>Eclipse 3.8, Eclipse 4.2 (Juno) or Eclipse 4.3 (Kepler). Read here if you have questions about the supported Eclipse packages.</li>
-        </ul>
-      </div>
-      <div class="download-version">
-        <h2>Scala-ide 1.1.0</h2>
-        <ul class="inside">
-          <li>Scala 2.12</li>
-          <li>Eclipse 3.8</li>
-        </ul>
-        <h3>Requirements</h3>
-        <ul class="requirements">
-          <li>JDK6 or JD7</li>
-          <li>Eclipse 3.8, Eclipse 4.2 (Juno) or Eclipse 4.3 (Kepler). Read here if you have questions about the supported Eclipse packages.</li>
-        </ul>
-      </div>
+    {% endfor %}
     </div>
 
-    <div class="downloads buttons win">
-      <div class="download-version">
-        <a class="button" href="http://scala-ide.org/download/win">Download</a>
-        <p class="system">Windows</p>
+    <div class="downloads buttons">
+    {% for version in page.versions %}
+      <div class="download-version {{ version[0] }}">
+        {% for download in version[1].downloads %}
+          <div class="download-system {{ download[0]  }}">
+            <a class="button" href="{{ download[1] }}">Download</a>
+            <p class="system">
+              {% if download[0] == "win" %}
+                Windows
+              {% elsif download[0] == "mac" %}
+                Mac OS
+              {% else %}
+                Linux
+              {% endif %}
+            </p>
+          </div>
+        {% endfor %}
       </div>
-      <div class="download-version current">
-        <a class="button" href="http://scala-ide.org/download/win">Download</a>
-        <p class="system">Windows</p>
-      </div>
-      <div class="download-version">
-        <a class="button" href="http://scala-ide.org/download/win">Download</a>
-        <p class="system">Windows</p>
-      </div>
-    </div>
-    <div class="downloads buttons mac">
-      <div class="download-version">
-        <a class="button" href="http://scala-ide.org/download/mac">Download</a>
-        <p class="system">Mac OS</p>
-      </div>
-      <div class="download-version current">
-        <a class="button" href="http://scala-ide.org/download/mac">Download</a>
-        <p class="system">Mac OS</p>
-      </div>
-      <div class="download-version">
-        <a class="button" href="http://scala-ide.org/download/mac">Download</a>
-        <p class="system">Mac OS</p>
-      </div>
-    </div>
-    <div class="downloads buttons linux">
-      <div class="download-version">
-        <a class="button" href="http://scala-ide.org/download/linux">Download</a>
-        <p class="system">Linux</p>
-      </div>
-      <div class="download-version current">
-        <a class="button" href="http://scala-ide.org/download/linux">Download</a>
-        <p class="system">Linux</p>
-      </div>
-      <div class="download-version">
-        <a class="button" href="http://scala-ide.org/download/linux">Download</a>
-        <p class="system">Linux</p>
-      </div>
+    {% endfor %}
     </div>
 
     <script type="text/javascript">
       if (navigator.appVersion.indexOf("Win") != -1) {
-        $(".downloads.buttons").not(".win").hide();
+        $(".download-system").not(".win").hide();
       }
       else if (navigator.appVersion.indexOf("Mac") != -1) {
-        $(".downloads.buttons").not(".mac").hide();
+        $(".download-system").not(".mac").hide();
       }
       else if (navigator.appVersion.indexOf("Linux") != -1) {
-        $(".downloads.buttons").not(".linux").hide();
+        $(".download-system").not(".linux").hide();
       }
     </script>
 
